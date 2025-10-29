@@ -6,7 +6,7 @@
 body {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: 1fr 2fr auto;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas:
     "header header header"
@@ -20,7 +20,7 @@ header {
   justify-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
-  height: 30vh;
+  height: 30%;
   margin: 10px;
 }
 a {
@@ -59,8 +59,10 @@ header p {
   height: 50px;
 }
 main {
-  width: 100vw;
+  width: 100%;
+  grid-area: main;
   display: grid;
+  grid-template-rows: 1fr auto;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas:
     "projects work education"
@@ -78,6 +80,7 @@ main ul {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.2);
 }
 #projects-section {
   grid-area: projects;
@@ -101,12 +104,14 @@ main ul {
   gap: 10px;
   border: 1px solid lightgray;
   padding: 10px;
+  box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.2);
 }
 #projects-section ul li,
 #work-section ul li,
 #education-section ul li {
   border: 1px solid lightgray;
   padding: 10px;
+  box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.2);
 }
 #reviews-section {
   grid-area: reviews;
@@ -126,14 +131,38 @@ main ul {
   height: 100%;
 }
 article {
-  border: 1px solid lightgray;
+  box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
   padding: 10px;
-  margin-top: 50px;
+  border: 1px solid lightgray;
+}
+article blockquote {
+  font-size: 2em;
+  padding-bottom: 25px;
+}
+.author {
+  text-align: right;
+  color: rgb(138, 138, 138);
 }
 footer {
   grid-area: footer;
   text-align: center;
   color: lightgray;
-  background-color: darkgray;
+  background-color: rgb(51, 50, 50);
   padding: 10px;
+}
+@media (max-width: 600px) {
+  main {
+    grid-template-rows: 1fr auto;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "projects"
+      "work"
+      "education"
+      "reviews";
+  }
+  #reviews-section {
+    flex-direction: column;
+  }
 }
