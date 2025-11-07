@@ -8,20 +8,40 @@ body {
   width: 100%;
   height: 100vh;
   overflow-x: hidden;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-columns: auto;
+  grid-template-areas: "nav" "header" "main" "footer";
+  background-image: radial-gradient(circle at top, black, #555);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 nav {
   width: 100%;
-  height: 8vh;
+  height: fit-content;
   background-color: #333;
   color: white;
+}
+span,
+a {
+  user-select: none;
 }
 nav ul {
   list-style-type: none;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
+}
+@media screen and (min-width: 600px) {
+  nav ul {
+    flex-direction: row;
+  }
+  .user-info {
+    margin-right: auto;
+  }
 }
 nav ul li {
   height: 100%;
@@ -31,21 +51,128 @@ nav ul li {
   display: flex;
   align-items: center;
   gap: 0.5em;
-  margin-right: auto;
 }
 .user-info img {
   width: 50px;
   height: 100%;
 }
 .nav-button {
-  background-color: #555;
+  padding: 1em;
+}
+.nav-button a {
+  background-color: #333;
   color: white;
   border: none;
   cursor: pointer;
-}
-.nav-button a {
-  display: block;
-  padding: vh 0;
+  padding: 15px;
+  transition: 0.3s;
   text-decoration: none;
+}
+.nav-button a:hover {
+  background-color: #555;
+}
+header {
+  background-image: url(https://cdn.pixabay.com/photo/2016/11/23/14/45/coding-1853305_960_720.jpg);
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  text-align: center;
   color: white;
+}
+header h1 {
+  font-size: min(10vw, 4em);
+  text-shadow: 0 0 10px black;
+  border-bottom: 1px solid white;
+}
+header p {
+  font-size: min(5vw, 2em);
+  text-shadow: 0 0 10px black;
+}
+main {
+  display: grid;
+  grid-area: main;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "projects work education"
+    "reviews reviews reviews";
+  gap: 1em;
+  margin: 1em;
+  padding: 1em;
+  height: fit-content;
+}
+@media screen and (max-width: 600px) {
+  main {
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "projects"
+      "work"
+      "education"
+      "reviews";
+  }
+}
+section {
+  background-color: #333;
+  color: white;
+  padding: 1em;
+  height: 100%;
+  border-radius: 1.2em;
+}
+section ul {
+  list-style: none;
+  padding: 2em;
+}
+section ul li {
+  padding: 0.5em 0;
+}
+section p {
+  margin: 1em 0;
+}
+strong {
+  text-decoration: underline;
+}
+#projects-section ul li,
+#work-section ul li,
+#education-section ul li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  border-bottom: 1px solid white;
+  padding: 1em 0;
+}
+#projects-section ul li:last-child,
+#work-section ul li:last-child,
+#education-section ul li:last-child {
+  border-bottom: none;
+}
+#reviews-section {
+  grid-area: reviews;
+  width: 100%;
+}
+.reviews {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1em;
+  padding: 1em;
+}
+.reviews article {
+  background-color: #555;
+  padding: 1em;
+  border-radius: 1em;
+  width: 1fr;
+}
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1em;
+  grid-area: footer;
 }

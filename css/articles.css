@@ -1,0 +1,31 @@
+body {
+  color: white;
+  display: grid;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  padding: 1em;
+}
+h1 {
+  font-size: 5em;
+  text-align: center;
+}
+article {
+  background-color: #555;
+  padding: 1em;
+  border-radius: 1em;
+  width: 1fr;
+}
+article h2 {
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 1em;
+}
+article p {
+  font-size: 1.2em;
+}
+h2 + p::first-letter {
+  font-size: 3em;
+}
